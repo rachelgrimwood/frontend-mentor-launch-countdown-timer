@@ -9,6 +9,7 @@ module.exports = {
       "dark-blue": "hsl(236, 21%, 26%)",
       "very-dark-blue": "hsl(235, 16%, 14%)",
       "blue-black": "hsl(234, 17%, 12%)",
+      links: "hsl(228, 45%, 44%)",
     },
     extend: {
       fontFamily: {

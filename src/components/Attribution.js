@@ -4,14 +4,14 @@ const Attribution = () => {
       <p>
         Challenge by{" "}
         <a
-          className="text-[hsl(228, 45%, 44%)]"
+          className="text-links"
           href="https://www.frontendmentor.io?ref=challenge"
           target="_blank"
           rel="noreferrer">
           Frontend Mentor
         </a>
         . Coded by{" "}
-        <a className="text-[hsl(228, 45%, 44%)]" href="https://github.com/rachelgrimwood">
+        <a className="text-links" href="https://github.com/rachelgrimwood">
           Rachel Grimwood
         </a>
         .
