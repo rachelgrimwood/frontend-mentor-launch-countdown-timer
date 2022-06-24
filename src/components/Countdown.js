@@ -1,8 +1,40 @@
+import { useState, useEffect } from "react";
+
+const today = new Date();
+const endDate = new Date(today);
+endDate.setDate(today.getDate() + 14);
+
 const Countdown = () => {
+  const getTimeLeft = () => {
+    let timeLeft = {};
+    const difference = endDate - new Date();
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft());
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTimeLeft(getTimeLeft());
+    }, 1000);
+  });
+
   return (
-    <div className="h-3/4 bg-[url('../src/images/bg-stars.svg')] uppercase font-redhat px-4 flex flex-col justify-center">
-      <h1 className="text-white text-2xl tracking-[0.3em]">We're launching soon</h1>
-      <p className="text-grayish-blue text-xs tracking-[0.2em]">Days Hours Minutes Seconds</p>
+    <div className="text-white">
+      <p>{timeLeft.days || 0}</p>
+      <p>{timeLeft.hours || 0}</p>
+      <p>{timeLeft.minutes || 0}</p>
+      <p>{timeLeft.seconds || 0}</p>
     </div>
   );
 };
