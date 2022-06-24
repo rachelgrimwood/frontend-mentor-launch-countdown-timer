@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import FlipCard from "./FlipCard";
 
 const today = new Date();
 const endDate = new Date(today);
@@ -30,11 +31,8 @@ const Countdown = () => {
   });
 
   return (
-    <div className="text-white">
-      <p>{timeLeft.days || 0}</p>
-      <p>{timeLeft.hours || 0}</p>
-      <p>{timeLeft.minutes || 0}</p>
-      <p>{timeLeft.seconds || 0}</p>
+    <div>
+      <FlipCard num={timeLeft.seconds} />
     </div>
   );
 };
