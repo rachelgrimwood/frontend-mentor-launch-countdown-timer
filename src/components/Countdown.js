@@ -31,8 +31,11 @@ const Countdown = () => {
   });
 
   return (
-    <div>
-      <FlipCard num={timeLeft.seconds} />
+    <div className="flex justify-center">
+      <FlipCard num={timeLeft.days} unit="days" />
+      <FlipCard num={timeLeft.hours} unit="hours" />
+      <FlipCard num={timeLeft.minutes} unit="minutes" />
+      <FlipCard num={timeLeft.seconds} unit="seconds" />
     </div>
   );
 };
