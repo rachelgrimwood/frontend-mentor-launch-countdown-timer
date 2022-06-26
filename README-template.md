@@ -64,6 +64,10 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 A pretty interesting gotcha I encountered was that using the provided background images in my components was throwing a 'module not found' error and crashing the app. After googling it I found this [Reddit post](https://www.reddit.com/r/tailwindcss/comments/jsgnzh/background_image_problem/). The problem was that when using Tailwind, all the styles end up in index.css, so relative paths need to originate from there rather than from the component's file!
 
+[This blog post](https://blog.avneesh.tech/how-to-make-a-count-down-timer-in-react) by Avneesh Agarwal provided a great simple countdown timer solution. I adapted this for my timer. (If you use this article note that the hours variable in the code is missing a modulo)
+
+I also learned the [padStart()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart) method in order to add leading zeros to the numbers.
+
 Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
 
 To see how you can add code snippets, see below:
@@ -96,10 +100,10 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Tailwind docs](https://tailwindcss.com/docs/installation)
+- [Javascript Date reference](https://css-tricks.com/everything-you-need-to-know-about-date-in-javascript/)
+- [React countdown timer](https://blog.avneesh.tech/how-to-make-a-count-down-timer-in-react)
+- [Scooped corners hack](https://css-tricks.com/scooped-corners-in-2018/)
 
 ## Author
 
