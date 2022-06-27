@@ -1,6 +1,6 @@
 const Attribution = () => {
   return (
-    <footer className="attribution text-[11px] text-grayish-blue bg-[#2F2439]">
+    <footer className="attribution text-[11px] text-grayish-blue bg-[#2F2439] pt-10 md:pt-5">
       <p>
         Challenge by{" "}
         <a
