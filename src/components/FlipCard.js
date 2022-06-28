@@ -2,7 +2,7 @@ const FlipCard = ({ num, unit }) => {
   const text = String(num).padStart(2, 0);
 
   return (
-    <div className="relative h-16 sm:h-20 md:h-32 lg:h-40 mt-16 md:mt-20 lg:mt-28 mb-8 mx-2 sm:mx-3 lg:mx-4 shadow-[black_0px_5px_2.5px_-1.5px] lg:shadow-[black_0px_6px_3px_-2px]">
+    <div className="relative h-16 sm:h-20 md:h-32 lg:h-40 mt-16 md:mt-20 lg:mt-28 mb-28 mx-2 sm:mx-3 lg:mx-4 shadow-[black_0px_5px_2.5px_-1.5px] lg:shadow-[black_0px_6px_3px_-2px]">
       <div className="card-top"></div>
       <div className="card-bottom"></div>
       <p className="relative leading-[4rem] sm:leading-[5rem] md:leading-[8rem] lg:leading-[10rem] w-16 sm:w-20 md:w-32 lg:w-40 z-20 text-3xl sm:text-5xl md:text-6xl lg:text-[5rem] text-soft-red">
