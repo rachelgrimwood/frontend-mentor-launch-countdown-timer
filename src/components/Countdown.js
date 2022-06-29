@@ -23,6 +23,7 @@ const Countdown = () => {
   };
 
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
+  const [isFlipping, setIsFlipping] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -32,10 +33,18 @@ const Countdown = () => {
 
   return (
     <div className="flex justify-center">
-      <FlipCard num={timeLeft.days} unit="days" />
-      <FlipCard num={timeLeft.hours} unit="hours" />
-      <FlipCard num={timeLeft.minutes} unit="minutes" />
-      <FlipCard num={timeLeft.seconds} unit="seconds" />
+      <button
+        type="button"
+        className="text-white"
+        onClick={() => {
+          setIsFlipping(true);
+        }}>
+        Flip
+      </button>
+      <FlipCard num={timeLeft.days} unit="days" isFlipping={isFlipping} />
+      <FlipCard num={timeLeft.hours} unit="hours" isFlipping={isFlipping} />
+      <FlipCard num={timeLeft.minutes} unit="minutes" isFlipping={isFlipping} />
+      <FlipCard num={timeLeft.seconds} unit="seconds" isFlipping={isFlipping} />
     </div>
   );
 };

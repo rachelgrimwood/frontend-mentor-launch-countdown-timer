@@ -8,6 +8,18 @@
   }
 
   .card-bottom {
-    @apply absolute h-8 sm:h-10 md:h-16 lg:h-[4.5rem] w-16 sm:w-20 md:w-32 lg:w-36 bottom-0 inset-x-0 mx-auto my-0 rounded-md bg-dark-blue before:absolute before:p-1 lg:before:p-1.5 before:-m-1 lg:before:-m-1.5 before:left-0 before:top-0 before:rounded-full before:[background:linear-gradient(90deg,_rgba(0,0,0,0)_50%,_hsl(234,_17%,_12%)_50%)] after:absolute after:p-1 lg:after:p-1.5 after:-m-1 lg:after:-m-1.5 after:right-0 after:top-0 after:rounded-full after:[background:linear-gradient(90deg,_hsl(234,_17%,_12%)_50%,_rgba(0,0,0,0)_50%)] z-10;
+    @apply absolute h-8 sm:h-10 md:h-16 lg:h-[4.5rem] w-16 sm:w-20 md:w-32 lg:w-36 bottom-0 inset-x-0 mx-auto my-0 rounded-md bg-dark-blue before:absolute before:p-1 lg:before:p-1.5 before:-m-1 lg:before:-m-1.5 before:left-0 before:top-0 before:rounded-full before:[background:linear-gradient(90deg,_rgba(0,0,0,0)_50%,_hsl(234,_17%,_12%)_50%)] after:absolute after:p-1 lg:after:p-1.5 after:-m-1 lg:after:-m-1.5 after:right-0 after:top-0 after:rounded-full after:[background:linear-gradient(90deg,_hsl(234,_17%,_12%)_50%,_rgba(0,0,0,0)_50%)];
+  }
+
+  .flip-container-top {
+    @apply absolute top-0 overflow-hidden h-8 sm:h-10 md:h-16 lg:h-[4.5rem];
+  }
+
+  .flip-container-bottom {
+    @apply absolute bottom-0 overflow-hidden h-8 sm:h-10 md:h-16 lg:h-[4.5rem];
+  }
+
+  .number-text {
+    @apply relative leading-[4rem] sm:leading-[5rem] md:leading-[8rem] lg:leading-[9rem] w-16 sm:w-20 md:w-32 lg:w-36 text-3xl sm:text-5xl md:text-6xl lg:text-[5rem] text-soft-red;
   }
 }
