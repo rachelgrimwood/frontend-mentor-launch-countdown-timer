@@ -1,14 +1,26 @@
-const FlipCard = ({ num, unit, isFlipping }) => {
-  const text = String(num).padStart(2, 0);
-  let nextNum;
-  if (unit === "minutes" || unit === "seconds") {
-    nextNum = num > 0 ? num - 1 : 59;
-  } else if (unit === "hours") {
-    nextNum = num > 0 ? num - 1 : 23;
-  } else if (num > 0) {
-    nextNum = num - 1;
-  }
-  const nextText = String(nextNum).padStart(2, 0);
+import { useState, useEffect } from "react";
+
+const FlipCard = ({ currNum, nextNum, unit }) => {
+  const padNum = (num) => {
+    return String(num).padStart(2, 0);
+  };
+
+  const [isFlipping, setIsFlipping] = useState(false);
+  const [[current, next], setNumber] = useState([currNum, nextNum]);
+  const [isFirstRender, setIsFirstRender] = useState(true);
+
+  useEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+      return;
+    }
+    setIsFlipping(true);
+  }, [currNum, nextNum]);
+
+  const animationEnd = () => {
+    setIsFlipping(false);
+    setNumber([currNum, nextNum]);
+  };
 
   return (
     <div className="mb-16">
@@ -16,19 +28,20 @@ const FlipCard = ({ num, unit, isFlipping }) => {
         {/* page 1 */}
         <div className="flip-container-top">
           <div className="card-top"></div>
-          <p className="number-text z-10">{text || "00"}</p>
+          <p className="number-text z-10">{padNum(current) || "00"}</p>
         </div>
 
         {/* page 2 */}
         <div
           className={
             isFlipping
-              ? "flip-container-bottom [transition:_transform_1s_ease] [transform-origin:top] [transform:rotateX(-180deg)] [backface-visibility:hidden] z-40"
+              ? "flip-container-bottom [transition:_transform_0.5s_ease] [transform-origin:top] [transform:rotateX(-180deg)] [backface-visibility:hidden] z-40"
               : "flip-container-bottom z-40"
-          }>
+          }
+          onTransitionEnd={animationEnd}>
           <div className="card-bottom"></div>
           <p className="number-text -translate-y-8 sm:-translate-y-10 md:-translate-y-16 lg:translate-y-[-4.5rem]">
-            {text || "00"}
+            {padNum(current) || "00"}
           </p>
         </div>
 
@@ -36,10 +49,10 @@ const FlipCard = ({ num, unit, isFlipping }) => {
         <div
           className={
             isFlipping
-              ? "flip-container-top [backface:hidden] [transition:_transform_1s_ease] [transform-origin:0%_100%] [transform:rotateX(0deg)] z-20"
+              ? "flip-container-top [backface:hidden] [transition:_transform_0.5s_ease] [transform-origin:0%_100%] [transform:rotateX(0deg)] z-20"
               : "flip-container-top [transform-origin:0%_100%] [transform:rotateX(180deg)] z-20"
           }>
-          <p className="number-text z-30">{nextText || "00"}</p>
+          <p className="number-text z-30">{padNum(next) || "00"}</p>
           <div className="card-top"></div>
         </div>
 
@@ -47,7 +60,7 @@ const FlipCard = ({ num, unit, isFlipping }) => {
         <div className="flip-container-bottom">
           <div className="card-bottom z-0"></div>
           <p className="number-text z-10 -translate-y-8 sm:-translate-y-10 md:-translate-y-16 lg:translate-y-[-4.5rem]">
-            {nextText || "00"}
+            {padNum(next) || "00"}
           </p>
         </div>
 

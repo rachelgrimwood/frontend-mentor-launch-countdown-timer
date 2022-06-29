@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import FlipCard from "./FlipCard";
 
 const today = new Date();
+today.setSeconds(today.getSeconds() + 1);
 const endDate = new Date(today);
 endDate.setDate(today.getDate() + 14);
 
@@ -11,11 +12,21 @@ const Countdown = () => {
     const difference = endDate - new Date();
 
     if (difference > 0) {
+      const currDays = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const currHours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const currMins = Math.floor((difference / 1000 / 60) % 60);
+      const currSeconds = Math.floor((difference / 1000) % 60);
+
+      const nextDays = currDays > 0 ? currDays - 1 : 0;
+      const nextHours = currHours > 0 ? currHours - 1 : 23;
+      const nextMins = currMins > 0 ? currMins - 1 : 59;
+      const nextSeconds = currSeconds > 0 ? currSeconds - 1 : 59;
+
       timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
+        days: [currDays, nextDays],
+        hours: [currHours, nextHours],
+        minutes: [currMins, nextMins],
+        seconds: [currSeconds, nextSeconds],
       };
     }
 
@@ -23,28 +34,19 @@ const Countdown = () => {
   };
 
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
-  const [isFlipping, setIsFlipping] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
+    setInterval(() => {
       setTimeLeft(getTimeLeft());
     }, 1000);
-  });
+  }, []);
 
   return (
     <div className="flex justify-center">
-      <button
-        type="button"
-        className="text-white"
-        onClick={() => {
-          setIsFlipping(true);
-        }}>
-        Flip
-      </button>
-      <FlipCard num={timeLeft.days} unit="days" isFlipping={isFlipping} />
-      <FlipCard num={timeLeft.hours} unit="hours" isFlipping={isFlipping} />
-      <FlipCard num={timeLeft.minutes} unit="minutes" isFlipping={isFlipping} />
-      <FlipCard num={timeLeft.seconds} unit="seconds" isFlipping={isFlipping} />
+      <FlipCard currNum={timeLeft.days[0]} nextNum={timeLeft.days[1]} unit="days" />
+      <FlipCard currNum={timeLeft.hours[0]} nextNum={timeLeft.hours[1]} unit="hours" />
+      <FlipCard currNum={timeLeft.minutes[0]} nextNum={timeLeft.minutes[1]} unit="minutes" />
+      <FlipCard currNum={timeLeft.seconds[0]} nextNum={timeLeft.seconds[1]} unit="seconds" />
     </div>
   );
 };
