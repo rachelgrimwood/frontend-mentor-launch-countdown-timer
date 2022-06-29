@@ -15,6 +15,7 @@ const FlipCard = ({ currNum, nextNum, unit }) => {
       return;
     }
     setIsFlipping(true);
+    // eslint-disable-next-line
   }, [currNum, nextNum]);
 
   const animationEnd = () => {
