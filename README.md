@@ -59,7 +59,7 @@ What didn't end up concise was the CSS for the calendar-style backgrounds behind
 
 ### Continued development
 
-As you can see I have not completed the bonus task, which is to give the cards a flipping animation, so that would be the next feature.
+Update: Flip animation is done! I may do some refactoring later on.
 
 ### Useful resources
 
